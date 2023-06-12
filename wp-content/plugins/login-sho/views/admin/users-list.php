@@ -8,6 +8,7 @@
             <th>ایمیل</th>
             <th>نام نمایشی</th>
             <th>موبایل</th>
+            <th>عملیات</th>
         </tr>
         </thead>
         <tbody>
@@ -21,6 +22,11 @@
                 <td><?php echo $user->user_email ?></td>
                 <td><?php echo $user->display_name ?></td>
                 <td></td>
+                <td>
+                    <a href="<?php echo $_SERVER['PHP_SELF'] . '?page=ls_users_list&action=delete&id=' . $user->ID ?>"
+                       class="dashicons dashicons-trash" style="color: orangered"></a>
+                    <a href="<?php echo $_SERVER['PHP_SELF'] . '?page=ls_users_list&action=update&id=' . $user->ID ?>"
+                       class="dashicons dashicons-edit" style="color: green"></a></td>
             </tr>
 		<?php endforeach; ?>
         </tbody>
