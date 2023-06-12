@@ -86,7 +86,6 @@ function ls_users_list_handler() {
 					'ID'         => intval( $_POST['id'] ),
 					'user_email' => apply_filters( "pre_user_email", $_POST['user_email'] )
 				];
-				var_dump( $user_data );
 				$update = wp_update_user( $user_data );
 			}
 			include LS_PLUGIN_VIEWS . "admin/update-user.php";
