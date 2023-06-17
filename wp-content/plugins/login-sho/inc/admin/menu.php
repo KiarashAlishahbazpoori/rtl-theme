@@ -68,7 +68,10 @@ function ls_add_users_handler() {
 			"user_email" => apply_filters( "pre_user_email", $_POST["user_email"] ),
 			"user_pass"  => apply_filters( "pre_user_pass", $password )
 		];
-		wp_insert_user( $user_data );
+		$user_id = wp_insert_user( $user_data );
+		if ($user_id > 0){
+			update_user_meta($user_id,"ls_phone", $_POST['ls_phone']);
+		}
 	}
 	include LS_PLUGIN_VIEWS . "admin/add-user.php";
 }
@@ -77,7 +80,10 @@ function ls_users_list_handler() {
 	switch ( $_GET['action'] ) {
 		case 'delete':
 			if ( intval( $_GET['id'] ) ) {
-				wp_delete_user( $_GET['id'] );
+				$wp_delete_user = wp_delete_user( $_GET['id'] );
+				if ($wp_delete_user){
+					delete_user_meta($_GET['id'], "ls_phone");
+				}
 			}
 			break;
 		case 'update':
@@ -87,6 +93,9 @@ function ls_users_list_handler() {
 					'user_email' => apply_filters( "pre_user_email", $_POST['user_email'] )
 				];
 				$update = wp_update_user( $user_data );
+				if ($update){
+					update_user_meta(intval( $_POST['id'] ), "ls_phone", $_POST['ls_phone']);
+				}
 			}
 			include LS_PLUGIN_VIEWS . "admin/update-user.php";
 

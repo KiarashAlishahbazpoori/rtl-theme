@@ -42,6 +42,7 @@ $user    = get_user_by( 'id', $user_id );
         <input type="hidden" name="id" value="<?php echo $user->ID ?>">
         <input type="text" disabled name="user_login" placeholder="نام کاربری" value="<?php echo $user->user_login ?>">
         <input type="text" name="user_email" placeholder="ایمیل" value="<?php echo $user->user_email ?>">
+        <input type="text" name="ls_phone" placeholder="موبایل" value="<?php echo get_user_meta($user->ID,'ls_phone', true);?>">
         <input type="submit" name="submit" value="بروزرسانی کاربر">
     </form>
 </div>
