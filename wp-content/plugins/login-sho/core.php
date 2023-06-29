@@ -28,6 +28,8 @@ if ( is_admin() ) {
 	include LS_PLUGIN_INC . 'front/list.php';
 }
 include LS_PLUGIN_INC . 'admin/shortcode-api.php';
+include LS_PLUGIN_INC . 'admin/film-post-type.php';
+include LS_PLUGIN_INC . 'admin/genre-taxonomy.php';
 
 
 
